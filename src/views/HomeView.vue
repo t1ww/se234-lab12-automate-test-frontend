@@ -52,9 +52,11 @@ function onCheckStudentClicked() {
       <div class="mt-3 flex">
         <button type="button"
           class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          id="getStudentInfo"
           @click="onCheckStudentClicked()">Check Student</button>
         <button type="button"
           class="ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          id="getStudentsInfo"
           @click="onCheckStudentsClicked()">Check Partial Students id</button>
       </div>
     </div>

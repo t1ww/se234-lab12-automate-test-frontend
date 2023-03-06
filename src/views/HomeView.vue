@@ -44,8 +44,8 @@ function onCheckStudentClicked() {
   <div class="border-b border-gray-200 ">
     <div class="pb-5 sm:flex sm:items-center sm:justify-between mx-32">
       <div class="mt-3">
-        <label for="email" class="sr-only">Email</label>
-        <input type="email" name="email" id="email" v-model="searchId"
+        <label for="studentId" class="sr-only">studentId</label>
+        <input type="text" name="studentId" id="studentId" v-model="searchId"
           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           placeholder="Student id .." />
       </div>

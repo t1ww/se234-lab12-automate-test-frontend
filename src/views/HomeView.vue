@@ -11,23 +11,28 @@ interface Student {
 }
 const searchId: Ref<string> = ref('')
 const students: Ref<Student[]> = ref([])
-  
-const showOutput = computed(() => students.value.length > 0)
 
+
+const showOutput = computed(() => students.value.length > 0)
+const totalGPa = computed(() => {
+  if (students.value.length > 0) {
+    return students.value.reduce((r, c) => r + c.gpa, 0) / students.value.length
+  } else {
+    return 0.0
+  }
+})
 function onCheckStudentsClicked() {
-  axios.get(import.meta.env.VITE_BASE_URL+'/students',{params: {id: searchId.value}}).then((data) =>
-  {
+  axios.get(import.meta.env.VITE_BASE_URL + '/students', { params: { id: searchId.value } }).then((data) => {
     students.value = data.data
-    
+
   }
   )
 }
 
-function onCheckStudentClicked() {  
-  axios.get(import.meta.env.VITE_BASE_URL+'/student',{params: {id: searchId.value}}).then((data) =>
-  {
+function onCheckStudentClicked() {
+  axios.get(import.meta.env.VITE_BASE_URL + '/student', { params: { id: searchId.value } }).then((data) => {
     students.value = data.data
-    
+
   }
   )
 }
@@ -52,12 +57,10 @@ function onCheckStudentClicked() {
       <div class="mt-3 flex">
         <button type="button"
           class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-          id="getStudentInfo"
-          @click="onCheckStudentClicked()">Check Student</button>
+          id="getStudentInfo" @click="onCheckStudentClicked()">Check Student</button>
         <button type="button"
           class="ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-          id="getStudentsInfo"
-          @click="onCheckStudentsClicked()">Check Partial Students id</button>
+          id="getStudentsInfo" @click="onCheckStudentsClicked()">Check Partial Students id</button>
       </div>
     </div>
   </div>
@@ -85,9 +88,18 @@ function onCheckStudentClicked() {
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ student.name }}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ student.surName }}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ student.gpa.toFixed(2) }}</td>
-
               </tr>
             </tbody>
+            <tfoot>
+
+              <tr>
+                <td scope="row" colspan="2"
+                  class="hidden pl-4 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell sm:pl-0">
+                </td>
+                <td scope="row" class="pl-6 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 ">Total GPA</td>
+                <td class="pl-3 pr-4 pt-4 text-sm font-semibold text-gray-900 sm:pr-0">{{totalGPa.toFixed(2)}}</td>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue';
+import { ref,  computed } from 'vue';
 import type { Ref } from 'vue';
 import axios from "axios";
 // import gql from 'graphql-tag'
@@ -97,7 +97,7 @@ function onCheckStudentClicked() {
                   class="hidden pl-4 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell sm:pl-0">
                 </td>
                 <td scope="row" class="pl-6 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 ">Total GPA</td>
-                <td class="pl-3 pr-4 pt-4 text-sm font-semibold text-gray-900 sm:pr-0">{{totalGPa.toFixed(2)}}</td>
+                <td class="pl-3 pr-4 pt-4 text-sm font-semibold text-gray-900 sm:pr-0"><div id="totalGPA">{{totalGPa.toFixed(2)}}</div></td>
               </tr>
             </tfoot>
           </table>

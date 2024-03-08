@@ -1,4 +1,4 @@
- version: '3.3'
+version: '3.3'
 services:
   backend:
     image: dto80/se234-lab11:latest
@@ -6,8 +6,8 @@ services:
       - 8001:8080
     volumes:
       -	type: bind
-	source: /home/ubuntu/xxx
-	target: /data
+        source: /home/ubuntu/xxx
+        target: /data
   frontend: 
     image: t1ww/labtenpointtwo
     ports:
